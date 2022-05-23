@@ -6,7 +6,6 @@ const port = 3000;
 connect();
 
 const goodsRouter = require("./routes/goods");
-const cartsRouter = require("./routes/carts")
 
 const requestMiddleware = (req, res, next) => {
     console.log("Request URL:", req.originalUrl, "-", new Date());
@@ -14,13 +13,14 @@ const requestMiddleware = (req, res, next) => {
 };
 
 app.use(express.json());
+app.use(express.static('static'));
 app.use(requestMiddleware);
 // app.use((req, res, next) => {
 //     console.log("미들웨어가 구현됐나?");
 //     next(); // next는 다음 미들웨어로 넘어 갈 수 있게 해준다.
 // });
 
-app.use("/api", [goodsRouter, cartsRouter]);  
+app.use("/api", [goodsRouter]);  
 
 app.get("/", (req, res) =>{
     res.send("Wellcome lojy_mall");
