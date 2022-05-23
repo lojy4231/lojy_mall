@@ -12,8 +12,9 @@ const requestMiddleware = (req, res, next) => {
     next();
 };
 
-app.use(express.json());
 app.use(express.static('static'));
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(requestMiddleware);
 // app.use((req, res, next) => {
 //     console.log("미들웨어가 구현됐나?");
