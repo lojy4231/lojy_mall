@@ -3,8 +3,8 @@ const Goods = require("../schemas/goods");
 const Carts = require("../schemas/cart");
 const router = express.Router();
 
-router.get("/carts", async (req, res) => {
-    const carts = await Carts.find();
+router.get("/goods/cart", async (req, res) => {
+    const carts = await Cart.find();
     const goodsIds = carts.map((cart) => cart.goodsId);
 
     const goods = await Goods.find({ goodsId: goodsIds });

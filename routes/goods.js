@@ -20,13 +20,26 @@ router.get("/goods", async (req, res) => {
 router.get("/goods/:goodsId", async (req, res) => {
     const { goodsId } = req.params;
 
-    const [detail] = await Goods.find({ goodsId: Number(goodsId) });
+    const [goods] = await Goods.find({ goodsId: Number(goodsId) });
 
     res.json({
-        detail,
+        goods,
     });
 });
 
+router.get("/goods/cart", async (req, res) => {
+    const carts = await Cart.find();
+    const goodsIds = carts.map((cart) => cart.goodsId);
+
+    const goods = await Goods.find({ goodsId: goodsIds });
+
+    res.json({
+        carts: carts.map((cart) => ({
+                quantity: cart.quantity,
+                goods: goods.find((item) => item.goodsId === cart.goodsId),
+        })),
+    });
+});
 
 
 router.post("/goods/:goodsId/cart", async (req, res) => {
