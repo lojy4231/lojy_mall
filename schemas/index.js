@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const connect = () =>{
-    mongoose.connect("mongodb://localhost:27017/lojy_mall").catch((err) =>{
+    mongoose.connect("mongodb://localhost:27017/lojy_mall", { ignoreUndefined: true }).catch((err) =>{
         console.error(err);
     });
 };

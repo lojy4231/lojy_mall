@@ -7,7 +7,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/goods", async (req, res) => {
-    const goods = await Goods.find();
+    const { category } = req.query;
+
+    const goods = await Goods.find({ category });
+    
     res.json({
         goods,
     });
