@@ -18,7 +18,7 @@ app.use(requestMiddleware);
 app.use("/api", goodsRouter);  
 
 app.get("/", (req, res) =>{
-    res.send("Hello World");
+    res.send("Wellcome lojy_mall");
 });
 
 app.listen(port, () =>{
