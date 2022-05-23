@@ -56,29 +56,29 @@ router.post("/goods/:goodsId/cart", async (req, res) => {
 
 });
 
-router.delete("/goods/:goodsId/cart", async (req, res) => {
-    const { goodsId } = req.params;
+// router.delete("/goods/:goodsId/cart", async (req, res) => {
+//     const { goodsId } = req.params;
 
-    const existCarts = await Cart.find({ goodsId: Number(goodsId) });
-    if(existCarts.length){
-        await Cart.deleteOne({ goodsId: Number(goodsId )});
-    }
+//     const existCarts = await Cart.find({ goodsId: Number(goodsId) });
+//     if(existCarts.length){
+//         await Cart.deleteOne({ goodsId: Number(goodsId )});
+//     }
 
-    res.json({ success: true });
-});
+//     res.json({ success: true });
+// });
 
-router.put("/goods/:goodsId/cart", async (req, res) => {
-    const { goodsId } = req.params;
-    const { quantity } = req.body;
+// router.put("/goods/:goodsId/cart", async (req, res) => {
+//     const { goodsId } = req.params;
+//     const { quantity } = req.body;
 
-    const existCarts = await Cart.find({ goodsId: Number(goodsId) });
-    if(existCarts.length){
-        await Cart.updateOne({ goodsId: Number(goodsId) }, { $set: { quantity }});
-    }
+//     const existCarts = await Cart.find({ goodsId: Number(goodsId) });
+//     if(existCarts.length){
+//         await Cart.updateOne({ goodsId: Number(goodsId) }, { $set: { quantity }});
+//     }
 
-    res.json({ success: true });
+//     res.json({ success: true });
     
-});
+// });
 
 router.post("/goods", async (req, res) => {
     const { goodsId, name, thumbnailUrl, category, price } = req.body;
